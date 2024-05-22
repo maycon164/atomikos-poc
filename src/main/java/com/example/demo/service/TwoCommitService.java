@@ -5,9 +5,9 @@ import com.example.demo.model.Worker;
 import com.example.demo.repository.oracle.JdbcEmployeeRepository;
 import com.example.demo.repository.postgres.UserEntity;
 import com.example.demo.repository.postgres.UserRepository;
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -23,7 +23,15 @@ public class TwoCommitService {
         return jdbcEmployeeRepository.getAllEmployees();
     }
 
-    @Transactional
+    /*
+        it can use import org.springframework.transaction.annotation.Transactional;
+        @org.springframework.transaction.annotation.Transactional(transactionManager = "transactionManager", rollbackFor = Exception.class);
+           - for some reason I need to specify transactionManager;
+
+        or can use Transaction from jakarta package
+        @jakarta.transaction.Transactional;
+     */
+    @Transactional(transactionManager = "transactionManager", rollbackFor = Exception.class)
     public Worker createUserAndCreateEmployeeAssociated(){
         UserEntity user = saveUserInPostgresDatabase();
         Employee employee = saveEmployeeInOracleDatabase(user.getId());
