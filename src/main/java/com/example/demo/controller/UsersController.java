@@ -1,6 +1,8 @@
 package com.example.demo.controller;
 
 import com.example.demo.model.Employee;
+import com.example.demo.model.Worker;
+import com.example.demo.repository.postgres.UserEntity;
 import com.example.demo.service.TwoCommitService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/teste")
 @RequiredArgsConstructor
 public class UsersController {
 
@@ -21,13 +23,18 @@ public class UsersController {
         return "USUARIOS";
     }
 
-    @GetMapping("teste")
-    private String getEmployees(){
-        return twoCommitService.createUserAndCreateEmployeeAssociated();
+    @GetMapping("saveOracle")
+    private Employee getEmployees(){
+        return twoCommitService.saveEmployeeInOracleDatabase(1L);
     }
 
-    @GetMapping("teste2")
-    private String saveUser(){
-        return twoCommitService.saveUser();
+    @GetMapping("savePostgres")
+    private UserEntity saveUser(){
+        return twoCommitService.saveUserInPostgresDatabase();
+    }
+
+    @GetMapping("saveBoth")
+    private Worker saveInBothDatabases() {
+        return twoCommitService.createUserAndCreateEmployeeAssociated();
     }
 }

@@ -17,3 +17,8 @@ spring:
     enabled: true
     service: com.atomikos.icatch.standalone.UserTransactionServiceFactory
     max-actives: 200
+
+com:
+  atomikos:
+    icatch:
+      file: ./transactions.properties
