@@ -1,9 +1,12 @@
 package com.example.demo.model;
 
+import lombok.Builder;
+
+@Builder(toBuilder = true)
 public record Employee(
         Long id,
         String job,
-        Double salary,
+        Integer salary,
         Long userId
 ) {
 }

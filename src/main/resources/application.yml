@@ -6,9 +6,14 @@ spring:
       driverClassName: org.postgresql.Driver
       url: jdbc:postgresql://localhost:5432/xa_pg
       username: postgres
-      password:
+      password: test
     oracle:
       driverClassName: oracle.jdbc.OracleDriver
       url: jdbc:oracle:thin:@localhost:1521:xe
       username: system
       password: test
+
+  jta:
+    enabled: true
+    service: com.atomikos.icatch.standalone.UserTransactionServiceFactory
+    max-actives: 200

@@ -1,7 +1,7 @@
 package com.example.demo;
 
-import com.example.demo.config.OracleDataSourceDTO;
-import com.example.demo.config.PostgresDataSourceDTO;
+import com.example.demo.config.datasources.OracleDataSourceDTO;
+import com.example.demo.config.datasources.PostgresDataSourceDTO;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;

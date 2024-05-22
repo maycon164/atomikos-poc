@@ -22,8 +22,12 @@ public class UsersController {
     }
 
     @GetMapping("teste")
-    private List<Employee> getEmployees(){
-        return twoCommitService.getAllEmployee();
+    private String getEmployees(){
+        return twoCommitService.createUserAndCreateEmployeeAssociated();
     }
 
+    @GetMapping("teste2")
+    private String saveUser(){
+        return twoCommitService.saveUser();
+    }
 }

@@ -53,6 +53,21 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>com.atomikos</groupId>
+			<artifactId>transactions-jta</artifactId>
+			<version>6.0.0</version> <!-- Commercial, for open source use version 6.0.0 -->
+			<classifier>jakarta</classifier>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.atomikos/transactions-jdbc -->
+		<dependency>
+			<groupId>com.atomikos</groupId>
+			<artifactId>transactions-jdbc</artifactId>
+			<version>6.0.0</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
