@@ -7,6 +7,9 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.transaction.TransactionDefinition;
+import org.springframework.transaction.jta.JtaTransactionManager;
+import org.springframework.transaction.support.TransactionTemplate;
 
 @Configuration
 @RequiredArgsConstructor
@@ -33,5 +36,12 @@ public class OracleDbConfiguration {
     @Bean
     public JdbcTemplate oracleJdbcTemplate(@Qualifier("oracleDataSource") AtomikosNonXADataSourceBean oracleDataSource){
         return new JdbcTemplate(oracleDataSource);
+    }
+
+    @Bean
+    public TransactionTemplate transactionTemplate(@Qualifier("transactionManager") JtaTransactionManager transactionManager){
+        TransactionTemplate transactionTemplate = new TransactionTemplate(transactionManager);
+        transactionTemplate.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRED);
+        return transactionTemplate;
     }
 }
