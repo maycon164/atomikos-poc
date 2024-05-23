@@ -1,0 +1,18 @@
+
+#TC_DAEMON = TRUE, WILL SHARE THE SAME INSTANCE BETWEEN TESTS
+#TC_INITSCRIPT=path, WILL EXECUTE SQL SCRIPT
+
+spring:
+  jpa:
+    database: POSTGRESQL
+  datasource:
+    postgres:
+      driverClassName: org.testcontainers.jdbc.ContainerDatabaseDriver
+      url: jdbc:tc:postgresql:14:///xa_postgres?TC_INITSCRIPT=postgres_init.sql&TC_DAEMON=true
+      username: postgres
+      password:
+    oracle:
+      driverClassName: org.testcontainers.jdbc.ContainerDatabaseDriver
+      url: jdbc:tc:oracle:21-slim-faststart:///xa_ora?TC_INITSCRIPT=oracle_init.sql&TC_DAEMON=true
+      username: system
+      password:
